@@ -1,4 +1,4 @@
-package tw.shop.member.controller;
+package tw.shop.user.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ public class HelloController {
     
     @GetMapping("/login")
     public String login() {
-        return "front/member/login";
+        return "front/user/login";
     }
     
 }
