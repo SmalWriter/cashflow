@@ -11,7 +11,7 @@ TODO：  技術亮點或其他相關資訊
 how to scale up : using some system design technique
 1. i18n, 
 2. offline read, 
-3. load balancer, 
+3. load balancer(redis: master write, others' slave read), 
 4. how to database replication, Partitioning and Sharding
 
 # shop 
