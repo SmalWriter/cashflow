@@ -1,20 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Login</title>
-<script
-	src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-<link type="text/css" rel="stylesheet"
-	href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-<script src="firebase-ui-auth.js"></script>
-<link rel="stylesheet" href="firebase-ui-auth.css">
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/layout/common_header :: head"></head>
 <body>
-	<!-- The surrounding HTML is left untouched by FirebaseUI.
-     Your app may use that space for branding, controls and other customizations.-->
-	<h1>Welcome to My Awesome App</h1>
-	<div id="firebaseui-auth-container"></div>
-	<div id="loader">Loading...</div>
+    <!-- 页面的特定内容 -->
+    <div id="firebaseui-auth-container"></div>
+    <script th:inline="javascript">
+        /* Firebase UI的初始化和配置脚本 */
+    </script>
 </body>
 </html>
