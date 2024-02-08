@@ -3,35 +3,42 @@ package tw.shop.config;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
-import org.springframework.security.context.DelegatingApplicationListener;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+@Configuration
 public class SecurityConfig extends WebSecurityConfiguration {
 
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-                .requestMatchers("/", "/home").permitAll()
-                .anyRequest().authenticated()
-                .and()
-            .oauth2Login()
-                .loginPage("/login")
-                .defaultSuccessUrl("/user")
-                .and()
-            .logout()
-                .logoutSuccessUrl("/")
-                .permitAll();
-    }
+	   @Autowired
+	   FirebaseAuthenticationTokenFilter firebaseAuthenticationTokenFilter;
+		    
+	   protected void configure(HttpSecurity http) throws Exception {
+		        http
+		            .authorizeRequests()
+		                .requestMatchers("/", "/home").permitAll()
+		                .anyRequest().authenticated()
+		                .and()
+		            .oauth2Login()
+		                .loginPage("/login")
+		                .defaultSuccessUrl("/user")
+		                .and()
+		            .logout()
+		                .logoutSuccessUrl("/")
+		                .permitAll();
+		    }
 
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
@@ -53,8 +60,5 @@ public class SecurityConfig extends WebSecurityConfiguration {
             .build();
     }
     
-    @Bean("customDelegatingApplicationListener")
-    public DelegatingApplicationListener delegatingApplicationListener() {
-        // bean definition
-    }
+    
 }
