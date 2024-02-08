@@ -6,6 +6,8 @@ import tw.shop.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -16,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public UserDto createUser(@RequestBody UserDto userDto) {
+    public UserDto createUser(@Valid @RequestBody UserDto userDto) {
         return userService.createUser(userDto);
     }
 
@@ -39,4 +41,6 @@ public class UserController {
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
+    
+    
 }

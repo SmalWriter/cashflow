@@ -6,6 +6,7 @@ import tw.shop.user.repository.UserRepository;
 import tw.shop.user.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,10 +20,14 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private ModelMapper modelMapper;
+    
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public UserDto createUser(UserDto userDto) {
         User user = modelMapper.map(userDto, User.class);
+        user.setPasswordHash(passwordEncoder.encode(userDto.getPassword()));
         user = userRepository.save(user);
         return modelMapper.map(user, UserDto.class);
     }
