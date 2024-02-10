@@ -9,13 +9,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 @Entity
-@Table(name = "users")
+@Table(name = "Users")
 public class User {
-	
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -31,24 +30,16 @@ public class User {
 
     @Column(nullable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
-
     
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", passwordHash=" + passwordHash + ", username=" + username
-				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
-	}
-	
-
+    
 	public User() {
 		super();
 	}
 
-
-	public User(Long id, String email, String passwordHash, String username, LocalDateTime createdAt,
+	public User(Long userId, String email, String passwordHash, String username, LocalDateTime createdAt,
 			LocalDateTime updatedAt) {
 		super();
-		this.id = id;
+		this.userId = userId;
 		this.email = email;
 		this.passwordHash = passwordHash;
 		this.username = username;
@@ -57,13 +48,13 @@ public class User {
 	}
 
 
-	public Long getId() {
-		return id;
+	public Long getUserId() {
+		return userId;
 	}
 
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long userId) {
+		this.userId = userId;
 	}
 
 
@@ -116,5 +107,9 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
     
-    
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", email=" + email + ", passwordHash=" + passwordHash + ", username=" + username
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+	}
 }

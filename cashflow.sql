@@ -1,5 +1,6 @@
 use cashflow;
 
+select * from Users;
 --用戶表
 CREATE TABLE Users (
     UserID INT IDENTITY PRIMARY KEY,
