@@ -1,11 +1,14 @@
 package tw.shop.payment.model;
 
 import jakarta.persistence.*;
+import tw.shop.cart.model.Cart;
 import tw.shop.order.model.Order;
+import tw.shop.user.model.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "Payments")
 public class Payment {
@@ -104,9 +107,5 @@ public class Payment {
 		this.order = order;
 	}
 
-
-	
-
-    
     // Getters and Setters
 }
