@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 public class UserDto {
     
-	private Long id;
+	private Long userId;
     
     @NotNull(message = "Email cannot be null")
     @Email(message = "Invalid email format")
@@ -18,11 +18,11 @@ public class UserDto {
     private String password;
     
     
-	public Long getId() {
-		return id;
+	public Long getUserId() {
+		return userId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	public String getEmail() {
 		return email;
@@ -49,16 +49,16 @@ public class UserDto {
 	public UserDto() {
 		super();
 	}
-	public UserDto(Long id, String email, String username) {
+	public UserDto(Long userId, String email, String username) {
 		super();
-		this.id = id;
+		this.userId = userId;
 		this.email = email;
 		this.username = username;
 	}
 	
 	@Override
 	public String toString() {
-		return "UserDto [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password + "]";
+		return "UserDto [userId=" + userId + ", email=" + email + ", username=" + username + ", password=" + password + "]";
 	}
 	
 
