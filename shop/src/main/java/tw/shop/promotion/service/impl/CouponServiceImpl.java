@@ -48,8 +48,8 @@ public class CouponServiceImpl implements CouponService {
 
         // 返回优惠券DTO，这里简化处理
         return new CouponDto(
-        	    coupon.getId(), 
-        	    coupon.getCode(), 
+        	    coupon.getCouponId(), 
+        	    coupon.getCouponCode(), 
         	    coupon.getDiscount(), 
         	    coupon.getValidFrom(), 
         	    coupon.getValidTo(), 

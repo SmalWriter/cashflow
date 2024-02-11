@@ -11,7 +11,7 @@ public class UserActivityLog {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long logId;
+    private Long userActivityLogId;
 
     @Column(nullable = false)
     private String activityType;
@@ -19,7 +19,7 @@ public class UserActivityLog {
     @Column(nullable = false)
     private LocalDateTime activityDate;
 
-    private String description;
+    private String logDescription;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")

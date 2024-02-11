@@ -22,13 +22,13 @@ public class Product {
     private Long productId;
 
     @Column(nullable = false)
-    private String name;
+    private String productName;
+
+    private String productDescription;
 
     @Column(nullable = false)
-    private BigDecimal price;
-
-    private String description;
-
+    private BigDecimal productPrice;
+    
     @Column(nullable = false)
     private int stockQuantity;
 
@@ -36,8 +36,7 @@ public class Product {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
-
-    @Column(nullable = false)
+    
     private LocalDateTime updatedAt;
     
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
@@ -51,17 +50,22 @@ public class Product {
     
     /*
      * 如果你想展示一個產品頁面，並在該頁面上列出「由此產品推薦」的其他產品，
-     * 你可以使用 recommendedProducts 集合。相反，如果你想找到所有「推薦此產品」的來源，
+     * 你可以使用 recommendedProducts 集合。
+     * 相反，如果你想找到所有「推薦此產品」的來源，
      * 你可以使用 productRecommendations 集合。
      */
     
     //可理解為：此產品推薦了以下產品
+    // 此產品推薦的所有產品集合
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    private Set<ProductRecommendation> recommendedProducts = new HashSet<>();
+    private Set<ProductRecommendation> recommendedProducts = new HashSet<>(); // 推薦出去的產品集合
 
     //可理解為：以下產品推薦了此產品
+    // 推薦此產品的所有產品集合
     @OneToMany(mappedBy = "recommendedProduct", fetch = FetchType.LAZY)
-    private Set<ProductRecommendation> productRecommendations = new HashSet<>();
+    private Set<ProductRecommendation> productRecommendations = new HashSet<>(); // 推薦此產品的產品集合
+    
+    
     
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private Set<Review> reviews = new HashSet<>();
@@ -71,7 +75,7 @@ public class Product {
     
     @ManyToMany
     @JoinTable(
-      name = "product_category",
+      name = "ProductCategory",
       joinColumns = @JoinColumn(name = "productId"),
       inverseJoinColumns = @JoinColumn(name = "categoryId")
     )
@@ -83,20 +87,6 @@ public class Product {
 	public Product() {
 		super();
 	}
-
-	public Product(Long productId, String name, BigDecimal price, String description, int stockQuantity,
-			String imageUrl, LocalDateTime createdAt, LocalDateTime updatedAt) {
-		super();
-		this.productId = productId;
-		this.name = name;
-		this.price = price;
-		this.description = description;
-		this.stockQuantity = stockQuantity;
-		this.imageUrl = imageUrl;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
-
     // Getters and Setters
 }
 	

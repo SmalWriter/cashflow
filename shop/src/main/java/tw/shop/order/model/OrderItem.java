@@ -32,7 +32,6 @@ public class OrderItem {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
     private LocalDateTime updatedAt;
 
     // Constructors, Getters, and Setters omitted for brevity

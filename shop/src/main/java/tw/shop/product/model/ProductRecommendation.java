@@ -17,13 +17,15 @@ public class ProductRecommendation {
      * 你可以使用 productRecommendations 集合。
      */
     
+    // 指向推薦此產品的產品，即此產品是「推薦者」
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "productId")
-    private Product product;
+    private Product product; // 這裡的product是推薦其他產品的產品
 
+    // 指向被推薦的產品，即此產品是「被推薦者」
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recommendedProductId")
-    private Product recommendedProduct;
+    private Product recommendedProduct; // 這裡的recommendedProduct是被推薦的產品
 
     // Getters and Setters
 }
