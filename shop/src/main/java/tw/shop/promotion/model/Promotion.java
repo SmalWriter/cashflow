@@ -21,7 +21,7 @@ public class Promotion {
     private Long promotionId;
 
     @Column(nullable = false)
-    private String description;
+    private String promotionDescription;
 
     @Column(nullable = false)
     private LocalDateTime startDate;
@@ -37,7 +37,7 @@ public class Promotion {
     
     @ManyToMany
     @JoinTable(
-        name = "promotion_product",
+        name = "PromotionProduct",
         joinColumns = @JoinColumn(name = "promotionId"),
         inverseJoinColumns = @JoinColumn(name = "productId")
     )
@@ -45,7 +45,7 @@ public class Promotion {
 
     @ManyToMany
     @JoinTable(
-        name = "promotion_user",
+        name = "PromotionUser",
         joinColumns = @JoinColumn(name = "promotionId"),
         inverseJoinColumns = @JoinColumn(name = "userId")
     )
@@ -53,7 +53,7 @@ public class Promotion {
 
     @ManyToMany
     @JoinTable(
-        name = "promotion_category",
+        name = "PromotionCategory",
         joinColumns = @JoinColumn(name = "promotionId"),
         inverseJoinColumns = @JoinColumn(name = "categoryId")
     )

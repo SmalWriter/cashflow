@@ -13,20 +13,13 @@ import java.util.Set;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long categoryId;
     
-    private String name;
+    private String categoryName;
 
     @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
 
-	public Category(Long id, String name, Set<Product> products) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.products = products;
-	}
-	
 	@ManyToMany(mappedBy = "categories")
     private Set<Promotion> promotions = new HashSet<>();
 

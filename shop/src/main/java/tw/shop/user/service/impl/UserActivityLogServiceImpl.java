@@ -39,11 +39,11 @@ public class UserActivityLogServiceImpl implements UserActivityLogService {
         log.setUser(user);
         log.setActivityType(logDto.getActivityType());
         log.setActivityDate(logDto.getActivityDate());
-        log.setDescription(logDto.getDescription());
+        log.setLogDescription(logDto.getDescription());
 
         log = logRepository.save(log);
 
-        logDto.setLogId(log.getLogId());
+        logDto.setLogId(log.getUserActivityLogId());
         return logDto;
     }
 }

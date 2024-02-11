@@ -13,11 +13,11 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long reviwId;
     private String content; // 评论内容
     private Integer rating; // 评分，假设1到5
-
+    private LocalDateTime createdTime; // 评论创建时间
+    
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user; // 评论的用户
@@ -26,7 +26,7 @@ public class Review {
     @JoinColumn(name = "productId", referencedColumnName = "id")
     private Product product; // 被评论的产品
 
-    private LocalDateTime createdTime; // 评论创建时间
+   
 
     // Constructors, Getters, and Setters
 }

@@ -15,19 +15,18 @@ public class WishlistItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long wishlistItemId;
 
     @ManyToOne
-    @JoinColumn(name = "userId", referencedColumnName = "id")
+    @JoinColumn(name = "userId")
     private User user;
 
     @ManyToMany
     @JoinTable(
-        name = "wishlist_product",
+        name = "WishlistProduct",
         joinColumns = @JoinColumn(name = "wishlistItemId"),
         inverseJoinColumns = @JoinColumn(name = "productId")
     )
     private Set<Product> products = new HashSet<>();
-
     // Constructors, Getters, and Setters
 }

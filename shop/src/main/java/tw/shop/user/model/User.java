@@ -40,12 +40,11 @@ public class User {
     private String passwordHash;
 
     @Column(nullable = false)
-    private String username;
+    private String userName;
 
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(nullable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
     
     //解釋：一個使用者可以建立多個訂單，每個訂單記錄使用者在不同時間購買的商品。
@@ -71,12 +70,14 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<UserActivityLog> activityLogs = new HashSet<>();
     
-    @OneToMany(mappedBy = "follower")
-    private Set<Follow> followings = new HashSet<>(); // 用户正在关注的人
-
+    //在中文中，follower 通常翻譯為「追隨者」，following 通常翻譯為「關注者」。
+    
     @OneToMany(mappedBy = "following")
     private Set<Follow> followers = new HashSet<>(); // 关注该用户的人
     
+    @OneToMany(mappedBy = "follower")
+    private Set<Follow> followings = new HashSet<>(); // 用户正在关注的人
+
     @ManyToMany(mappedBy = "users")
     private Set<Promotion> promotions = new HashSet<>();
     
