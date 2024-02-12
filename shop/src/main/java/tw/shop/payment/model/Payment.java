@@ -34,8 +34,5 @@ public class Payment {
     @JoinColumn(name = "orderId")
     private Order order;
     
-	public Payment() {
-		super();
-	}
     // Getters and Setters
 }
