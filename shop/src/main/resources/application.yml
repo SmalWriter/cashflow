@@ -1,0 +1,25 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 211012224823-in9skp0don26ucrp6kfeckpbcdfh25ki.apps.googleusercontent.com
+            client-secret: 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
+            redirectUri: "http://localhost:8080/cashflow/"
+            scope:
+              - email
+              - profile
+          github:
+            client-id: 1a7cef141df56a156bd2
+            client-secret: github-client-secret
+            redirectUri: "http://localhost:8080/cashflow/"
+            scope:
+              - read:user
+          facebook:
+            client-id: 911071133985923
+            client-secret: 9e7b602b4fd900b1b9c82ac56b630d21ce9a1c40
+            redirectUri: "http://localhost:8080/cashflow/"
+            scope:
+              - email
+              - public_profile

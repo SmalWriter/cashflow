@@ -1,5 +1,6 @@
 use cashflow;
 
+
 -- 用户表
 CREATE TABLE Users (
     userId BIGINT IDENTITY(1,1) PRIMARY KEY,
@@ -9,6 +10,8 @@ CREATE TABLE Users (
     createdAt DATETIME NOT NULL,
     updatedAt DATETIME NULL
 );
+SELECT * from Users;
+
 
 -- 第三方登录表
 CREATE TABLE UserOAuth (
