@@ -16,8 +16,9 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long paymentId;
 
-    @Column(nullable = false)
-    private Long orderId;
+    @ManyToOne
+    @JoinColumn(name = "orderId")
+    private Order order;
 
     @Column(nullable = false)
     private String paymentMethod;
@@ -29,10 +30,6 @@ public class Payment {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
-
-    @ManyToOne
-    @JoinColumn(name = "orderId")
-    private Order order;
     
     // Getters and Setters
 }
